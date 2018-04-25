@@ -6,45 +6,80 @@
     
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
   
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    
+    <link rel="stylesheet" href="index.css">
     <script>
         $(function(){
+            var name
+            var tripStop
+            var people
+            var activities
+            var total
             
+            $('#answer').hide()
+            
+            $("#submit").click(function(){
+              name=$("#name").val();
+              people=$("#numPeople").val();
+              tripStop=$('input[name=stop]:checked').val();
+              $('#answer').show()
+              
+              console.log(name)
+              console.log(people)
+              console.log(tripStop)
+              
+              if (tripStop==1){
+                total = 1,709 * people
+              }
+              else if(tripStop==2){
+                total = 909 * people
+              }
+              $('#story').text('Hi ' + name+ '! Time to plan your trip to bolivia. I see that ' + people + ' people are going on the trip. You are also taking a ' + tripStop + ' stop trip. The total cost of your trip is $'+ total + ' (not inclusing the hotel and self expenses).')
+            });
+            
+            $("#funfact").click(function(){
+              var list = ['The name Bolivia comes from the Venezuelan military and political leader Simon Bolivar who led Venezuela, Ecuador, Bolivia, Peru and Colombia to independence from Spain in 1825. He was also officially the first president of Bolivia.','At 3,650m (11,975ft) above sea level, La Paz is unofficially the highest capital city in the world. The official capital is Sucre but the working capital (the seat of government) is in La Paz.',' Zebras (or rather people dressed as zebras) wander the streets of La Paz helping children cross the road safely and educating drivers and pedestrians about road safety.','The Camino de las Yungas road, 56km (35 miles) northeast of La Paz, is known as the “world’s most dangerous road”. There are an estimated 200 to 300 fatalities every year on this stretch of road less than 50 miles long.','Dead animals including dried llama foetuses are sold on the streets of Bolivia to citizens so they can offer them up to Pachamama (Mother Nature) in return for blessings.','Bolivia granted all nature equal rights to humans in 2010. The law redefined the country’s rich mineral deposits as “blessings”.','Salar de Uyuni is an enormous 10,582 square kilometres in size, making Bolivia home to the largest salt flats in the world.']
+              
+              var randomNum = Math.floor(Math.random() * 8)
+              
+              $('#showfunfact').text(list[randomNum])
+            });
         });
     </script>
   </head>
   <body>
-    <h1>Plan your trip to Bolivia!</h1>
-    
-    How many people are going on the trip?<br><select>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-    </select>
-    
-    <p>Would you like to take a <input type="radio" id="radioButton1">2 stop trip or <input type="radio" id="radioButton2">1 stop trip?</p>
-    
-    What are your favorite thing to do on trip?
-    <input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter">
-    <label>Water sports</label>
-    <input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter">
-    <label>Climb Mountains</label>
-    <input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter">
-    <label>Look a historical sites</label>
-    <input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter">
-    <label>Lake</label>
-    <input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter">
-    <label>Salt Lakes</label>
+    <div id='questions' class="text-vertical-center">
+      <h1>Plan your trip to Bolivia!</h1><br><br>
+    What is your name?<br><input type="text" placeholder='Type your name here...' id='name' class="form-control"/><br><br>
+    How many people are going on the trip?<br>
+    <div class="form-group">
+      <select id='numPeople' multiple class="form-control" id="exampleFormControlSelect2">>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+    </div>
+    <br>
+    <p>Would you like to take a <input name='stop' type="radio" id="radioButton1" value='2'> 2 stop trip or <input name='stop' type="radio" id="radioButton2" value='1'> 1 stop trip?</p>
+    <br>
+    <button type="button" class="btn btn-outline-dark btn-lg" id='submit'>Submit!</button>
+    </div>
     
     <div id='answer'>
-      <p id='story'></p>
-      <p id='funfact'>Click here for a fun fact</p>
+      <br><br><br>
+      <p id='story'></p><br><br>
+      <button id='funfact' class="btn btn-outline-dark btn-lg">Click here for a fun fact</button><br><br>
+      <p id='showfunfact'></p>
     </div>
   </body>
 </html>

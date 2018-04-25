@@ -1,0 +1,55 @@
+html, body {
+      width: 100%;
+      height: 100%;
+    }
+
+#questions{
+  display: table;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(0,0,0,0.9),
+    rgba(0,0,0,0.1)
+  ),
+    url('bolivia.png') no-repeat center;
+  background-size: cover;
+  color:white;
+}
+
+.text-vertical-center {
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+    color: white;
+}
+
+body{
+  font-size: x-large;
+  font-family: monospace
+}
+
+#answer{
+  display: table;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(70,20,100,.9),
+    rgba(50,40,100,.4)
+  );
+  color:white;
+}
+
+#name{
+  color:black;
+  width: 50%;
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+}
+
+#numPeople{
+  width: 50%;
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+}
